@@ -7,7 +7,7 @@ COPY FormForgeFE/package.json FormForgeFE/package-lock.json ./
 RUN npm install
 
 COPY FormForgeFE/ ./
-RUN npm run build --configuration Form-Forge
+RUN npm run build --configuration FormForge
 
 # Stage 2: Build Flask app
 FROM python:3.9
