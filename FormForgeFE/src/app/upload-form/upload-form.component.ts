@@ -55,10 +55,10 @@ export class UploadFormComponent implements AfterViewInit {
 
       try {
         // Production - whatever the flask docker container is running as
-	      // const baseUrl = window.location.origin;
+	      const baseUrl = window.location.origin;
 
         // Development (flask server on port 5000)
-        const baseUrl = "http://192.168.88.136:5000/";
+        // const baseUrl = "http://192.168.88.136:5000/";
         const CONTROLLER = "/api/v1";
 
         const response = await fetch(`${baseUrl}${CONTROLLER}/upload`, {
