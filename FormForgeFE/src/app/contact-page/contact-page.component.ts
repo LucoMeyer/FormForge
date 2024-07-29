@@ -44,13 +44,18 @@ export class ContactPageComponent implements AfterViewInit {
     let newLeft = button.offsetLeft + moveX;
     let newTop = button.offsetTop + moveY;
 
-    
+    const maxLeft = window.innerWidth - button.clientWidth;
+    const maxTop = window.innerHeight - button.clientHeight;
+
     if (newLeft < 0) newLeft = 0;
-    if (newLeft + button.clientWidth > window.innerWidth) newLeft = window.innerWidth - button.clientWidth;
+    if (newLeft > maxLeft) newLeft = maxLeft;
     if (newTop < 0) newTop = 0;
-    if (newTop + button.clientHeight > window.innerHeight) newTop = window.innerHeight - button.clientHeight;
+    if (newTop > maxTop) newTop = maxTop;
 
     button.style.left = `${newLeft}px`;
     button.style.top = `${newTop}px`;
+
+    console.log('Button Position:', { newLeft, newTop, maxLeft, maxTop });
+    console.log('Button Style:', { left: button.style.left, top: button.style.top });
   }
 }
