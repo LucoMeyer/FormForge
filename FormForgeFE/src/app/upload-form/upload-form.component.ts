@@ -55,7 +55,8 @@ export class UploadFormComponent implements AfterViewInit {
 
       try {
         const CONTROLLER = "/api/v1";
-        const response = await fetch('http://192.168.88.136:12345' + CONTROLLER + '/upload', {
+        // const response = await fetch('http://192.168.88.136:12345' + CONTROLLER + '/upload', {
+        const response = await fetch('http://' + CONTROLLER + '/upload', {
           method: 'POST',
           body: formData,
         });
