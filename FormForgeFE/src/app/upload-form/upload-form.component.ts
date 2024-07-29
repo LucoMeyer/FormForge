@@ -54,12 +54,21 @@ export class UploadFormComponent implements AfterViewInit {
       formData.append('file', file);
 
       try {
+	const baseUrl = window.location.origin;
         const CONTROLLER = "/api/v1";
+
+	const response = await fetch(`${baseUrl}${CONTROLLER}/upload`, {
+	  method: 'POST',
+	  body: formData,
+	});
+
+	/*
         // const response = await fetch('http://192.168.88.136:12345' + CONTROLLER + '/upload', {
         const response = await fetch('http://' + CONTROLLER + '/upload', {
           method: 'POST',
           body: formData,
         });
+	*/
 
         if (!response.ok) {
           throw new Error(`Failed to upload file: ${response.statusText}`);
