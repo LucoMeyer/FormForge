@@ -1,11 +1,12 @@
 import logging
 import os
 import tempfile
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from PyPDF2 import PdfReader
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
+
 CORS(app, resources={r"/api/*": {"origins": "*"}})
 UPLOAD_FOLDER = tempfile.gettempdir()
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -99,6 +100,15 @@ def validate_risk_profile(fields):
             missing_fields.append(field)
 
     return list(set(missing_fields))
+
+
+@app.route('/')
+def serve():
+    return send_from_directory(app.static_folder, 'index.html')
+
+@app.route('/<path:path>')
+def static_proxy(path):
+    return send_from_directory(app.static_folder, path)
 
 @app.route('/api/v1/upload', methods=['POST'])
 def upload_file():
