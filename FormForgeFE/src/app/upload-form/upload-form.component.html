@@ -1,0 +1,49 @@
+<div class="upload-section">
+  <div class="header">
+    <img src="assets/formforge-Logo.png" alt="FormForge Logo" class="logo">
+    <h1>Upload a file</h1>
+  </div>
+  
+  <div class="text-center">
+    <img src="assets/form-icon.png" alt="Form Icon" class="form-icon">
+    <div class="form-options text-start">
+  
+    </div>
+    <input type="file" multiple (change)="onFileSelected($event)" accept="application/pdf" class="form-control-file">
+    <button class="btn btn-primary btn-upload" [disabled]="selectedFiles.length === 0" (click)="onSubmit()">Upload File</button>
+  </div>
+</div>
+
+<!-- Modal Element -->
+<div #resultModal class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="resultModalLabel">Results</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body results-container">
+        <div class="result" *ngFor="let result of results">
+          <h5>{{ result.docType }}</h5>
+          <div *ngIf="result.success" class="success-result">
+            <i class="fas fa-check-circle success-icon"></i>
+            <p>All fields filled in!</p>
+          </div>
+          <div *ngIf="!result.success && result.docType !== 'Unknown'" class="failure-result">
+            <p>Missing fields:</p>
+            <ul>
+              <li *ngFor="let field of result.missingFields">{{ field }} </li>
+            </ul>
+          </div>
+          <div *ngIf="result.docType === 'Unknown'" class="unrecognized-result">
+            <i class="fa-regular fa-face-surprise unrecognized-icon"></i>
+            <p>Oh oh, we don't recognize this form.</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Okay</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -162,3 +162,9 @@ cython_debug/
 #.idea/
 
 FormForgeBE/venv
+FormForgeFE/.angular
+FormForgeFE/.vscode
+FormForgeFE/node_modules
+
+FormForgeFE.tgz
+

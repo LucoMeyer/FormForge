@@ -1,0 +1,30 @@
+<div class="upload-section">
+    <div class="header">
+      <h1>Contact Us</h1>
+    </div>
+  
+    <div class="button-container">
+      <i class="fas fa-phone icon"></i>
+      <button class="btn btn-compliments" (click)="openComplimentsModal()">Compliments</button>
+      <button class="btn btn-complaints" (mouseover)="runAway($event)" (click)="doNothing()">Complaints</button>
+    </div>
+  </div>
+  
+  
+  <div #complimentsModal class="modal fade" id="complimentsModal" tabindex="-1" aria-labelledby="complimentsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="complimentsModalLabel">Compliments</h5>
+          
+        </div>
+        <div class="modal-body">
+          <p>Please send all compliments to Luco.meyer@gmail.com</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Okay</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
