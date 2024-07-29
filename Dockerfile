@@ -22,7 +22,7 @@ RUN pip install -r requirements.txt
 COPY FormForgeBE/ ./
 
 # Copy built Angular app from Stage 1
-COPY --from=build /app/dist/your-angular-app-name /app/static
+COPY --from=build /app/dist/form-forge /app/static
 
 EXPOSE 5000
 
